@@ -25,14 +25,18 @@
       <div class="main-bg"></div>
       <div class="bg-p"></div>
       <div class="content">
-        <div class="count">今日免费抽奖次数： {{ count}}</div>
+        <!--<div class="count">今日免费抽奖次数： {{ count}}</div>-->
+        <div class="count">抽奖次数： {{ count}}</div>
       </div>
       <div class="tip">
         <div class="tip-title">活动规则</div>
         <div class="tip-content">
-          <p>1.每日签到后，即可获得一次幸运大转盘的机会，仅限当天有效，过期作废。 2.金币抽奖，每10个金豆可兑换一次大转盘机会。</p>
-          <p>2.金币抽奖，每10个金豆可以兑换一次大转盘抽奖机会</p>
-          <p>3.所中金豆或积分到【我的账户】中查询。累计达到100金豆及以上，可以兑换相应奖品</p>
+          <!--<p>1.每日签到后，即可获得一次幸运大转盘的机会，仅限当天有效，过期作废。 2.金币抽奖，每10个金豆可兑换一次大转盘机会。</p>-->
+          <!--<p>2.金币抽奖，每10个金豆可以兑换一次大转盘抽奖机会</p>-->
+          <!--<p>3.所中金豆或积分到【我的账户】中查询。累计达到100金豆及以上，可以兑换相应奖品</p>-->
+          <p>1.活动时间：2021/08/02 00:00:00 至 2021/08/02 00:00:00.</p>
+          <p>2.本次活动解释权归油油所有.</p>
+          <p>3.抽到啥就是啥，目前只有一次机会😀.</p>
         </div>
       </div>
     </div>
@@ -64,12 +68,12 @@ const config = {
 export default {
   data() {
     return {
-      count: 10, // 剩余抽奖次数
-      duration: 3000, // 转盘旋转时间
+      count: 1, // 剩余抽奖次数
+      duration: 1000, // 转盘旋转时间
       prizeList: [], // 奖品列表
       rotateAngle: 0, // 旋转角度
       index: 0,
-      prize: null
+      prize: null,
     };
   },
   created() {
@@ -95,7 +99,7 @@ export default {
       return this.prize && this.prize.isPrize === 1
         ? "恭喜您，获得" +
             this.prize.name
-        : "未中奖";
+        : "恭喜你，获取绝佳称号";
     },
     toastIcon() {
       return this.prize && this.prize.isPrize === 1
@@ -148,6 +152,7 @@ export default {
       // 可以返回下标，也可以返回奖品 id，通过查询 奖品列表，最终得到下标
 
       // 随机获取下标
+      // this.index = this.random(this.prizeList.length - 1);
       this.index = this.random(this.prizeList.length - 1);
 
       // 减少剩余抽奖次数
